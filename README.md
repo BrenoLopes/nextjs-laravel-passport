@@ -43,7 +43,7 @@ class User extends Authenticatable
 ```
 
 5. Create an Oauth client and put nextauth callback url ``` http://localhost:3000/api/auth/callback/passport ``` 
-    ** if you don't want to use the passport id, then switch passport at the end of the url for your id at step 7
+    ** if you don't want to use the passport id, then switch passport at the end of the url for your id at step 8
 
     ** if you're going to serve nextjs from another domain or port, then adapt the url for your needs. 
 ```bash
@@ -53,5 +53,10 @@ php artisan passport:client
 6. Create an environment file based on .env.local.example with the name .env.local, grab the clientId and
 clientSecret and save the ids into the `AUTH_PASSPORT_ID` and `AUTH_PASSPORT_SECRET` environment variables.
 
-7. Open the configuration file at `app/api/auth/[...nextauth]/route.ts` and make make the changes needed for your
+7. Create a secret for nextauth with the following command
+```bash
+npx auth 
+```
+
+8. Open the configuration file at `app/api/auth/[...nextauth]/route.ts` and make make the changes needed for your
 needs if you served laravel at another location or you want to change the provider id.
